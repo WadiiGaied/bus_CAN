@@ -60,8 +60,8 @@ all: main-build
 main-build: CAN.elf secondary-outputs
 
 # Tool invocations
-CAN.elf CAN.map: $(OBJS) $(USER_OBJS) C:\Users\WADII\Desktop\CAN\Bus\ CAN\CAN\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CAN.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\WADII\Desktop\CAN\Bus CAN\CAN\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+CAN.elf CAN.map: $(OBJS) $(USER_OBJS) C:\Users\WADII\STM32CubeIDE\workspace_1.13.2\CAN\STM32F407VGTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "CAN.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\WADII\STM32CubeIDE\workspace_1.13.2\CAN\STM32F407VGTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CAN.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

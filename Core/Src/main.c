@@ -128,20 +128,20 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	 while (HAL_GPIO_ReadPin(GPIOA, USER_Pin) == GPIO_PIN_RESET );
+	 while ( HAL_GPIO_ReadPin(GPIOA, USER_Pin) == GPIO_PIN_RESET ){}
 
-	    HAL_GPIO_WritePin(GPIOD, GREEN_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(GPIOD, ORANGE_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(GPIOD, RED_Pin, GPIO_PIN_RESET);
-	    HAL_GPIO_WritePin(GPIOD, BLUE_Pin, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_14, GPIO_PIN_RESET);
+	  HAL_GPIO_WritePin(GPIOD, GPIO_PIN_15, GPIO_PIN_RESET);
 
 	    pTxHeader.DLC=1;
 	    pTxHeader.ExtId=0;
 	    pTxHeader.IDE=CAN_ID_STD;
-	    pTxHeader.StdId=1;
+	    pTxHeader.StdId=0x123;
 	    pTxHeader.RTR=CAN_RTR_DATA;
 	    pTxHeader.TransmitGlobalTime = DISABLE;
-	    // sprintf (aTxData,"%d\r\n",Board);
+
 	 if (HAL_CAN_AddTxMessage(&hcan1,&pTxHeader,aTxData,(uint32_t *)CAN_TX_MAILBOX0)!= HAL_OK)
 	     {
 	    Error_Handler();
@@ -277,7 +277,7 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 		  {
 		     Error_Handler();
 		  }
-	if (pRxHeader.StdId = 0x123)
+	if (pRxHeader.StdId == 0x123)
 	  {
 	    if (aRxData[0] == 0x01)
 	    {
