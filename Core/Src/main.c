@@ -37,7 +37,7 @@
 
 /* Private macro -------------------------------------------------------------*/
 /* USER CODE BEGIN PM */
-#define Board 2
+#define Board 4
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
@@ -300,6 +300,13 @@ void HAL_CAN_RxFifo0MsgPendingCallback(CAN_HandleTypeDef *hcan)
 	      HAL_GPIO_WritePin(GPIOD, RED_Pin, GPIO_PIN_SET);
 	      HAL_GPIO_WritePin(GPIOD, BLUE_Pin, GPIO_PIN_RESET);
 	    }
+	     if (aRxData[0] == 0x04)
+	     {
+	       HAL_GPIO_WritePin(GPIOD, GREEN_Pin, GPIO_PIN_SET);
+	       HAL_GPIO_WritePin(GPIOD, ORANGE_Pin, GPIO_PIN_SET);
+	       HAL_GPIO_WritePin(GPIOD, RED_Pin, GPIO_PIN_SET);
+	       HAL_GPIO_WritePin(GPIOD, BLUE_Pin, GPIO_PIN_SET);
+	     }
 	  }
 }
 /* USER CODE END 4 */
